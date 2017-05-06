@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid">
+  <div class="navbar-header">
+      <button type="button" ng-click="isShowSideBarMobile = !isShowSideBarMobile;isShowRightContent = false;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" ui-sref="stream">LIME STREAM TV</a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a ui-sref="auth"> Login </a></li>
+      <li><a ui-sref="register"> Register </a></li>          
+    </ul>
+    <form class="navbar-form navbar-right">
+      <input type="text" class="form-control" placeholder="Search...">
+    </form>
+  </div>
+</div>
+</nav>
+ <div class="col-sm-4 col-sm-offset-4">
+ <h1>LIME STREAM TV</h1>
+	<div class="well">
+		<h3>Email Address </h3>
+		<form>
+			<p class="alert alert-danger" ng-if="auth.loginError"><strong>Error:</strong> {{auth.loginErrorText}}</p>
+			<div class="form-group">
+			   	<input type="email" id="email" class="form-control" name="email" placeholder="Email" ng-model="auth.newReset.email">
+		  	</div>
+
+		  	<button class="btn btn-primary" type="submit" ng-click="auth.reset()">
+	        	<i class="fa fa-btn fa-envelope"></i> Send Password Reset Link
+	    	</button>
+		</form>
+			<br/>
+        		<a ui-sref="auth">Back to Login</a>
+			<!--<p id="power">0</p> -->
+
+	</div> 
+</div>

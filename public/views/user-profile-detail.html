@@ -1,0 +1,112 @@
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" ng-click="isShowSideBarMobile = !isShowSideBarMobile;isShowRightContent = false;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      <a class="navbar-brand" ui-sref="dashStream">LIME STREAM TV</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="dashLives"><span class="glyphicon glyphicon-camera"></span></a></li>
+            <li><a ui-sref="dashVideos">Dashboard</a></li>
+            <li><span class="glyphicons glyphicons-message-lock" aria-hidden="true"></span></li>
+            <li class="dropdown">
+              <a href="dashVid" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="{{currentUser.avatar}}" width="20" height="20" />{{currentUser.username}} <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a ui-sref="profile">Profile</a></li>
+                <li><a ui-sref="dashLives">Live Settings</a></li>
+                <li><a href="#" ng-click="dash.logout()">Logout</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header"> </li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Report a problem </a></li>
+              </ul>
+            </li>
+          </ul>
+        <form class="navbar-form navbar-right">
+          <input type="text" class="form-control" placeholder="Search...">
+        </form>
+      </div>
+    </div>
+  </nav>
+    
+  <div class="row panel">
+    <div class="col-md-4 bg_blur" ng-style="{'background-image':'url({{currentUser.img}})'}">
+          <a href="#" class="follow_btn hidden-xs">Follow</a>
+    </div>
+        <div class="col-md-8  col-xs-12">
+           <img src="{{currentUser.avatar}}" class="img-thumbnail picture hidden-xs" />
+           <img src="{{currentUser.avatar}}" class="img-thumbnail visible-xs picture_mob" />
+           <div class="header">
+                <h1>{{currentUser.username}}</h1>
+    <ul>
+      <li ng-repeat="item in userProfile">
+
+        <a ui-sref="profile.item({itemId:item.id})"> {{item.value}} « Edit </a>
+
+      </li>
+    </ul>
+
+    <div ui-view class="slide">
+      <!-- Example of default content. This content will be replace as soon as
+           this ui-view is populate with a template -->
+      <small class="muted">Click on a contact item to view and/or edit it.</small>
+    </div>
+
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+            <input type="file" file-model="myFile"/>
+            <button class="btn btn-primary" ng-click="updateProfile()">Change Profile </button>
+        </div>
+      </form>
+
+           </div>
+        </div>
+    </div>   
+    
+  <div class="row nav">    
+    <div class="col-md-4"></div>
+      <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+          <div class="col-md-4 col-xs-4 well_pro" ui-sref="users.timeline"><i class="fa fa-weixin fa-lg"></i> Timeline </div>
+          <div class="col-md-4 col-xs-4 well_pro"><i class="fa fa-heart-o fa-lg"></i> About </div>
+          <div class="col-md-4 col-xs-4 well_pro" data-toggle="modal"><i class="fa fa-camera-retro fa-lg"></i> Upload</div>
+      </div>
+    </div>
+
+<div class="row"> 
+    <div class="col-sm-4 col-sm-offset-4">
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+              <input type="file" file-model="myFile"/>
+               <button class="btn btn-primary" ng-click="uploadFile()">Upload </button>
+          </div>
+        </form>
+    </div>
+  </div>
+
+
+<div class="row"> 
+  <div class="col-sm-4 col-sm-offset-4">
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+            <input type="file" file-model="myFile"/>
+             <button class="btn btn-primary" ng-click="uploadVideo()">Video Upload </button>
+        </div>
+      </form>
+  </div>
+</div>
+
+
+    <!--<div class="row"> 
+      <div class="col-sm-12">
+          <form action="upload-file"
+          class="dropzone"
+          id="my-awesome-dropzone" dropzone="dropzoneConfig"></form>
+      </div>
+    </div> -->
+
+ 

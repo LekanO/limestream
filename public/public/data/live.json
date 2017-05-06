@@ -1,0 +1,9 @@
+{
+  "title": "Videogular",
+  "data": [  
+    {"id": 1, "title": "First Org", "src": "http://dash.edgesuite.net/envivio/dashpr/clear/Manifest.mpd"}
+  ],
+  "poster": "http://static.videogular.com/assets/images/videogular.png",
+  "quizes": [
+   ]
+} 

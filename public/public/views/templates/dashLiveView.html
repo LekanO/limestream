@@ -1,0 +1,192 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" ng-click="isShowSideBarMobile = !isShowSideBarMobile;isShowRightContent = false;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">LIME STREAM TV</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboarddd</a></li>
+            <li><span class="glyphicons glyphicons-message-lock" aria-hidden="true"></span></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#" ng-click="user.logout()">Logout</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header"> </li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Report a problem </a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+ 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li ng-class="{ active: $state.includes('dashLives') }"><a ui-sref="dashLives"><span class="glyphicon glyphicon-home"> Home </span></a></li>
+          <li ng-class="{ active: $state.includes('users.list') }"><a ui-sref="users.list"><span class="glyphicon glyphicon-user"> Users </span> </a></li>
+          <li ng-class="{ active: $state.includes('videos') }"><a ui-sref="videos"><span class="glyphicon glyphicon-facetime-video"> Videos </span></a></li>
+          <li ng-class="{ active: $state.includes('videos') }"><a ui-sref="dashEvents"><span class="glyphicon glyphicon-calendar"> Events </span></a></li>
+          <li  ng-class="{ active: $state.includes('live') }" ><a ui-sref="live"><span class="glyphicon glyphicon-camera"> Watch Live </span></a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li class="men-diff"><a href="#"> Current <span class="sr-only">(current)</span>{{user.name}}</a></li>
+          <li><a href="#/livectm/{{all.id}}" ng-repeat="all in allList track by $index | limitTo:2">{{all.title}}</a></li>
+        </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Videos, {{currentUser.name}}</h1>
+
+        <div class="pull-left">
+            <h1>Upload Management</h1>
+        </div>
+        <div class="pull-right" style="padding-top:30px">
+            <div class="box-tools" style="display:inline-table">
+              <div class="input-group">
+                  <input type="text" class="form-control input-sm ng-valid ng-dirty" placeholder="Search" ng-change="searchDB()" ng-model="searchText" name="table_search" title="" tooltip="" data-original-title="Min character length is 3">
+                  <span class="input-group-addon">Search</span>
+              </div>
+            </div>
+            <button class="btn btn-success" data-toggle="modal" data-target="#create-user">Create Neww</button>
+        </div>
+
+        <table class="table table-bordered pagin-table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Upload</th>
+                <th width="220px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr dir-paginate="value in data | itemsPerPage:5" total-items="totalItems">
+                <td>{{ $index + 1 }}</td>
+                <td>{{ value.name }}</td>
+                <td>{{ value.description }}</td>
+                <td>
+                <button data-toggle="modal" ng-click="edit(value.id)" data-target="#edit-data" class="btn btn-primary">Edit</button>
+                <button ng-click="remove(value,$index)" class="btn btn-danger">Deletee</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <dir-pagination-controls class="pull-right" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.html" ></dir-pagination-controls>
+    <!-- Create Modal -->
+    <div class="modal fade" id="create-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="POST" name="addItem" role="form" ng-submit="saveAdd()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Create Videosss</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <strong>Title : </strong>
+                                <div class="form-group">
+                                    <input ng-model="form.title" type="text" placeholder="Name" name="title" class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <strong>Description : </strong>
+                                <div class="form-group" >
+                                    <textarea ng-model="form.description" class="form-control" required>
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <strong>low : </strong>
+                                <div class="form-group" >
+                                    <textarea ng-model="form.description" class="form-control" required>
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" ng-disabled="addItem.$invalid" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Edit Modal -->
+    <div class="modal fade" id="edit-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="POST" name="editItem" role="form" ng-submit="saveEdit()">
+                    <input ng-model="form.id" type="hidden" placeholder="Name" name="name" class="form-control" />
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Edit Video</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                   <input ng-model="form.title" type="text" placeholder="Name" name="title" class="form-control" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                   <textarea ng-model="form.description" class="form-control" required>
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    <label for="sel1">Select list (select one):</label>
+                                      <select ng-model="form.status" class="form-control" id="sel1">
+                                        <option>On</option>
+                                        <option>Off</option>
+                                      </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" ng-disabled="editItem.$invalid" class="btn btn-primary create-crud">Submit</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+          <h2 class="sub-header">Section title</h2>
+            <div ui-view> </div>
+          <div class="table-responsive">
+
+          </div>
+
+        </div>
+      </div>
+    </div>

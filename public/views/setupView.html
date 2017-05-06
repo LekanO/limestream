@@ -1,0 +1,82 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+<div class="container-fluid">
+  <div class="navbar-header">
+      <button type="button" ng-click="isShowSideBarMobile = !isShowSideBarMobile;isShowRightContent = false;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" ui-sref="stream">LIME STREAM TV</a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><a ui-sref="auth"> Login </a></li>
+      <li><a ui-sref="register"> Register </a></li>          
+    </ul>
+    <form class="navbar-form navbar-right">
+      <input type="text" class="form-control" placeholder="Search...">
+    </form>
+  </div>
+</div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <h1 class="page-header"> Lime Stream Setup </h1>
+      <p class="page-header"> Open OBS and click Settiings. Refer to the screenshots below: </p>
+
+      <div class="table-responsive">
+      </div>
+
+      <h4 class="page-header"> General </h4>
+
+      <p class="page-header"> Configure General tab to the screenshot below </p>
+
+      <h4 class="page-header"> Stream </h4>
+
+      <b> Select Type: </b> Custom Streaming Server
+
+      <p><b> URL: </b> hls (for ios platforms) <b> Enter: </b> rtmp://www.limestream.tv/hls </p>
+
+      <p> dash (for web browser and android platforms) <b> Enter: </b> rtmp://www.limestream.tv/dash </p>
+
+      <p><b> Stream Key: </b> Enter a stream key i.e (example) </p>
+
+      <p class="page-header"> Copy <b> URL </b> and <b> Stream Key </b> somewhere for use later </p>
+
+
+      <h4 class="page-header"> Output </h4>
+
+      <p> Configure your Output tab to the screenshot </p>
+
+      <p> You can check out other configuration tab settings </p>
+
+      <p> Click  <b> Ok </b></p>
+
+
+      <h4 class="page-header"> Display Your Stream </h4>
+
+      <p> Connect your camera device to your computer </p>
+
+      <p> Right click the Scene tab and add a scene </p>
+
+      <p> Right click the Source tab, add Video Capture Device and click Ok </p>
+
+      <p> Device: Select your device name and click Ok. </p>
+
+      <p> You should see your camera device display output </p>
+
+      <p> Click Start Streaming… You will know if it’s screaming once the button change to Stop Streaming </p>
+
+      <p> Login to your Lime Stream profile. </p>
+
+      <p> Click your Live Stream button, click create and enter required details </p>
+
+      <p> Turn on your stream status and your are done.</p>
+
+      <p>You should now be able to see your stream the lists of live streams </p>
+
+    </div>
+  </div>
+</div>

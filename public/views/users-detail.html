@@ -1,0 +1,46 @@
+   <div class="row panel">
+    <div class="col-md-4 bg_blur" ng-style="{'background-image':'url({{user.img}})'}">
+          <a href="#" class="follow_btn hidden-xs">Follow</a>
+    </div>
+        <div class="col-md-8  col-xs-12">
+           <img src="{{user.avatar}}" class="img-thumbnail picture hidden-xs" />
+           <img src="{{user.avatar}}" class="img-thumbnail visible-xs picture_mob" />
+           <div class="header">
+                <h1>{{user.username}}</h1>
+                <h4>Description</h4>
+                <span>{{user.description}}</span>
+    <ul>
+
+    <li ng-repeat="item in user.items">
+
+      <!-- Here's another ui-sref except THIS time we are passing parameters
+           AND inheriting parameters from active ancestor states. So we don't
+           need to resupply the contactId parameter. -->
+      <h3>{{item.type}}</h3>
+      <a ui-sref="users.detail.item({itemId:item.id})"> {{item.value}} « Edit </a>
+    </li>
+  </ul>
+
+  <div ui-view class="slide">
+    <!-- Example of default content. This content will be replace as soon as
+         this ui-view is populate with a template -->
+    <small class="muted">Click on a contact item to view and/or edit it.</small>
+  </div>
+           </div>
+        </div>
+    </div>   
+    
+  <div class="row nav">    
+        <div class="col-md-4"></div>
+        <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+            <div class="col-md-4 col-xs-4 well_pro" ui-sref="users.timeline"><i class="fa fa-weixin fa-lg"></i> Timeline </div>
+            <div class="col-md-4 col-xs-4 well_pro"><i class="fa fa-heart-o fa-lg"></i> About </div>
+            <div class="col-md-4 col-xs-4 well_pro"><i class="fa fa-camera-retro fa-lg"></i> Upload</div>
+        </div>
+    </div>
+
+    <div class="row"> 
+      <div class="col-sm-12">
+
+      </div>
+    </div> 

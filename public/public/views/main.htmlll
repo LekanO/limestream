@@ -1,0 +1,9 @@
+<h1>Video page</h1>
+
+<ul>
+    <li ng-repeat="all in allList track by $index">
+        <a href="#/vide/{{alll.id}}">
+          <h4>{{all.title}}</h4>
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,71 @@
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">LIME STREAM TV</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><span class="glyphicons glyphicons-message-lock" aria-hidden="true"></span></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#" ng-click="user.logout()">Logout</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header"> </li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Report a problem </a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a ui-sref="dashLive"> Home </a></li>
+            <li><a ui-sref="users"> Users </a></li>
+            <li><a ui-sref="videos"> Videos </a></li>
+            <li><a ui-sref="#"> Events </a></li>
+            <li><a ui-sref="#"> Watch Live </a></li>
+
+
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#"> Current <span class="sr-only">(current)</span>{{user.name}}</a></li>
+            <li><a href="#" ng-repeat="user in user.users">{{user.name}}</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Videos, {{currentUser.name}}</h1>
+          <ul>
+              <li ng-repeat="all in allList track by $index">
+                  <a href="#/videos/{{all.id}}">
+                    <h4>{{all.src}}</h4>
+                  </a>
+              </li>
+          </ul>
+
+          <h2 class="sub-header">Section title</h2>
+          
+          <div class="table-responsive">
+
+          </div>
+
+        </div>
+      </div>
+    </div>

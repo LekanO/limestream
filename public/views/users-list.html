@@ -1,0 +1,9 @@
+<h2 class="page-header">Users</h2>
+	<div class="row placeholders">
+	    <div class="col-xs-6 col-sm-3 placeholder" ng-repeat="user in users">
+	      <a ui-sref="users.detail({userId:user.id})">
+	      	<img src="{{user.avatar}}" width="200" height="132" class="img-responsive">
+	      	<h4>{{user.username}}</h4>
+	      </a>
+	    </div>
+	</div>
